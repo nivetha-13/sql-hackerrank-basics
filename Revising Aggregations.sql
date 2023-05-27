@@ -13,3 +13,10 @@ WHERE DISTRICT = 'California';
 SELECT AVG(POPULATION)
 FROM CITY
 WHERE DISTRICT = 'California';
+
+--Query the average population for all cities in CITY, rounded down to the nearest integer.
+SELECT ROUND(AVG(POPULATION),2) as AvgPopulation
+FROM CITY
+--Method 2
+SELECT FLOOR(AVG(POPULATION)) as AvgPopulation
+FROM CITY
