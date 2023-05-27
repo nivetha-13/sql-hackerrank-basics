@@ -43,9 +43,25 @@ FROM CITY
 SELECT  CAST (CEILING (AVG(CAST(Salary AS FLOAT)) - AVG (CAST(REPLACE (Salary, 0,"") AS FLOAT))) AS INT)
 FROM Employees
 
+-- TOP EARNERS
+--We define an employee's total earnings to be their monthly  worked, 
+--and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. 
+--Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings. 
+--Then print these values as  space-separated integers.
+
+
+select top 1 max(salary*months) as total_sal, count(employee_id) from Employee group by (salary*months) order by total_sal desc
+select top 1 max(salary*months) as "total_sal", count(employee_id) from Employee group by (salary*months) order by total_sal desc
+
 
 -- Weather Observation 2
 --Query the following two values from the STATION table:
 --The sum of all values in LAT_N rounded to a scale of 2 decimal places.
 --The sum of all values in LONG_W rounded to a scale of 2 decimal places.
 
+select cast(sum(lat_n) as Decimal(10,4)) from station where lat_n between 38.7880 and 137.2345;
+
+SELECT CONVERT(decimal(10, 2), SUM(LAT_N)) AS LAT, CONVERT(decimal(10, 2), SUM(LONG_W)) AS LON FROM STATION;
+-- Weather Observation 13
+select cast(sum(lat_n) as Decimal(10,4)) from station where lat_n between 38.7880 and 137.2345;
+select round(sum(lat_n),4) from station where lat_n between 38.7880 and 137.2345;
