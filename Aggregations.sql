@@ -33,3 +33,19 @@ WHERE COUNTRYCODE = 'JPN';
 -- Query the difference between the maximum and minimum populations in CITY.
 SELECT (MAX(POPULATION) - MIN(POPULATION)) AS difference
 FROM CITY
+
+
+-- The Blender
+--Samantha was tasked with calculating the average monthly salaries for all employees in the EMPLOYEES table, 
+--but did not realize her keyboard's  key was broken until after completing the calculation. 
+--She wants your help finding the difference between her miscalculation (using salaries with any zeros removed), and the actual average salary.
+--Write a query calculating the amount of error (i.e.:  average monthly salaries), and round it up to the next integer.
+SELECT  CAST (CEILING (AVG(CAST(Salary AS FLOAT)) - AVG (CAST(REPLACE (Salary, 0,"") AS FLOAT))) AS INT)
+FROM Employees
+
+
+-- Weather Observation 2
+--Query the following two values from the STATION table:
+--The sum of all values in LAT_N rounded to a scale of 2 decimal places.
+--The sum of all values in LONG_W rounded to a scale of 2 decimal places.
+
