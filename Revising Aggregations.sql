@@ -20,3 +20,8 @@ FROM CITY
 --Method 2
 SELECT FLOOR(AVG(POPULATION)) as AvgPopulation
 FROM CITY
+
+--Population Density Difference
+-- Query the difference between the maximum and minimum populations in CITY.
+SELECT (MAX(POPULATION) - MIN(POPULATION)) AS difference
+FROM CITY
