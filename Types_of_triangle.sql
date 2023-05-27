@@ -26,3 +26,19 @@ WHEN A = B OR B = C OR A = C THEN 'Isosceles'
 ELSE 'Scalene'
 END
 FROM TRIANGLES;
+
+-- METHOD 2
+select case
+when ((tr.A+tr.B)<=tr.C) then 'Not A Triangle'
+else
+    case 
+        when (tr.A = tr.B) and (tr.A = tr.C) then 'Equilateral'
+    else
+        case 
+            when (tr.A = tr.B) or (tr.A=tr.C) or (tr.C=tr.B) then 'Isosceles'
+        else
+            'Scalene '
+        end
+    end
+end 
+from TRIANGLES as tr;
