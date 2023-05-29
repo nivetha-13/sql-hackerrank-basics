@@ -74,6 +74,12 @@ select round(sum(lat_n),4) from station where lat_n between 38.7880 and 137.2345
 --Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than . 
 --Truncate your answer to  decimal places.
 
+--MS SQL
+
+SELECT CAST(MAX(LAT_N) AS DECIMAL(10,4))
+FROM STATION
+WHERE LAT_N < 137.2345;
+
 -- Mysql
 SELECT ROUND(MAX(LAT_N),4)
 FROM STATION
