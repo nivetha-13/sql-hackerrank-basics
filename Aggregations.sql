@@ -43,6 +43,10 @@ FROM CITY
 SELECT  CAST (CEILING (AVG(CAST(Salary AS FLOAT)) - AVG (CAST(REPLACE (Salary, 0,"") AS FLOAT))) AS INT)
 FROM Employees
 
+-- Method 2 - using Mysql
+SELECT CEILING(AVG(SALARY) - AVG(REPLACE(SALARY,0,'')))
+FROM EMPLOYEES
+
 -- TOP EARNERS
 --We define an employee's total earnings to be their monthly  worked, 
 --and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. 
