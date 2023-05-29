@@ -131,3 +131,47 @@ Write a query to find the smallest value of the Northern Latitudes greater than 
 SELECT CAST(MIN(LAT_N) AS DECIMAL(10,4))
 FROM STATION
 WHERE LAT_N > 38.7780;
+
+--Problem Statement --Weather Observation 17
+/*
+
+Given a table STATION that holds data for five fields namely ID, CITY, STATE, NORTHERN LATITUDE and WESTERN LONGITUDE.
+
++-------------+------------+
+| Field       |   Type     |
++-------------+------------+
+| ID          | INTEGER    |
+| CITY        | VARCHAR(21)|
+| STATE       | VARCHAR(2) |
+| LAT_N       | NUMERIC    |
+| LONG_W      | NUMERIC    |
++-------------+------------+
+ 
+Write a query to find the corresponding Western Longitude to the smallest value of the Northern Latitudes greater than 38.7780 up to 4 decimal places.
+
+*/
+--Solution
+SELECT CAST(LONG_W AS DECIMAL(10,4))
+FROM STATION
+WHERE LAT_N = (SELECT MIN(LAT_N) FROM STATION WHERE LAT_N > 38.7780)
+
+--Problem Statement --Weather Observation 18
+--Consider  and  to be two points on a 2D plane.
+
+-- happens to equal the minimum value in Northern Latitude (LAT_N in STATION).
+ --happens to equal the minimum value in Western Longitude (LONG_W in STATION).
+ --happens to equal the maximum value in Northern Latitude (LAT_N in STATION).
+ --happens to equal the maximum value in Western Longitude (LONG_W in STATION).
+--Query the Manhattan Distance between points  and  and round it to a scale of  decimal places.
+
+-- MS SQL
+SELECT
+cast(ABS(MAX(LAT_N)-MIN(LAT_N)) + ABS(MAX(LONG_W)-MIN(LONG_W)) as decimal(10,4))
+FROM STATION;
+-- ABS - absolute ( LIKE MOD operator | | )
+-- Manhattan distance
+--(definition)
+--Definition: The distance between two points measured along axes at right angles. 
+--In a plane with p1 at (x1, y1) and p2 at (x2, y2), it is |x1 - x2| + |y1 - y2|.
+
+
