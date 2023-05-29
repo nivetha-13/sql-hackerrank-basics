@@ -107,3 +107,27 @@ Write a query to find the corresponding Western Longitude value for the greatest
 SELECT CAST(LONG_W AS DECIMAL(10,4))
 FROM STATION
 WHERE LAT_N = (select MAX(LAT_N) FROM STATION WHERE LAT_N < 137.2345);
+
+--Problem Statement --Weather Observation 16
+/*
+Given a table STATION that holds data for five fields namely ID, CITY, STATE, NORTHERN LATITUDE and WESTERN LONGITUDE.
+
++-------------+------------+
+| Field       |   Type     |
++-------------+------------+
+| ID          | INTEGER    |
+| CITY        | VARCHAR(21)|
+| STATE       | VARCHAR(2) |
+| LAT_N       | NUMERIC    |
+| LONG_W      | NUMERIC    |
++-------------+------------+
+ 
+Write a query to find the smallest value of the Northern Latitudes greater than 38.7780 up to 4 decimal places.
+
+*/
+
+--Solution
+
+SELECT CAST(MIN(LAT_N) AS DECIMAL(10,4))
+FROM STATION
+WHERE LAT_N > 38.7780;
