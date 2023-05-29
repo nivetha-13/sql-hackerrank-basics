@@ -69,3 +69,12 @@ SELECT CONVERT(decimal(10, 2), SUM(LAT_N)) AS LAT, CONVERT(decimal(10, 2), SUM(L
 -- Weather Observation 13
 select cast(sum(lat_n) as Decimal(10,4)) from station where lat_n between 38.7880 and 137.2345;
 select round(sum(lat_n),4) from station where lat_n between 38.7880 and 137.2345;
+
+-- Weather Observation 14
+--Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than . 
+--Truncate your answer to  decimal places.
+
+-- Mysql
+SELECT ROUND(MAX(LAT_N),4)
+FROM STATION
+WHERE LAT_N < 137.2345;
