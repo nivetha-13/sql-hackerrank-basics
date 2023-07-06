@@ -62,7 +62,14 @@ select top 1 max(salary*months) as "total_sal", count(employee_id) from Employee
 --Query the following two values from the STATION table:
 --The sum of all values in LAT_N rounded to a scale of 2 decimal places.
 --The sum of all values in LONG_W rounded to a scale of 2 decimal places.
+SELECT CAST(ROUND(SUM(LAT_N),2) as DECIMAL(10,2)), CAST(ROUND(SUM(LONG_W),2) as DECIMAL(10,2))
+FROM STATION;
+--the syntax that he is using is T-SQL (Microsoft SQL Server)
+--When you ROUND() with T-SQL, it leaves trailing 0’s after the rounded number.
+--e.g. 120.02 vs 120.020000 where the latter answer is not correct.
+--He casts it as a DECIMAL(10,2) because the “2” will ensure that there will only be 2 digits after the decimal point.
 
+_______________________________________________________________________________________________________
 select cast(sum(lat_n) as Decimal(10,4)) from station where lat_n between 38.7880 and 137.2345;
 
 SELECT CONVERT(decimal(10, 2), SUM(LAT_N)) AS LAT, CONVERT(decimal(10, 2), SUM(LONG_W)) AS LON FROM STATION;
